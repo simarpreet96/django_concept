@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <h4>List Of Product Add By You</h4>
+            {% for pro in userproduct %}
+                        <h2>{{ pro.name }}</h2>
+                     {% for image in pro.product_images.all %}
+                            <img height="70" width="70" alt="" src="{{ image.image.url }}">
+                    {% endfor %}
+                        <!-- <img height="70" width="70" src="{{ image.image.url }}"> -->
+                        <p>{{ pro.price|linebreaksbr }}</p>
+                        <p>{{ pro.description|linebreaksbr }}</p>
+                        <p>{{ pro.category|linebreaksbr }}</p>
+                        <a href="{% url 'product_edit' pro.pk %}">Product Edit</a>
+                        <a href="{% url 'product_del' pro.pk %}">Product Delete</a>
+                        <a href="{% url 'add_to_cart' pro.pk %}">Add to Cart</a>
+                        <a href="{% url 'add_to_wishlist' pro.pk %}">Add to Wishlist</a>
+                        {% if pro.published == 1 %}
+                        <button><a href="{% url 'product_publish' pro.pk%}">published</a></button>
+                        {% else  %}
+                        <button><a href="{% url 'product_publish' pro.pk%}">unpublished</a></button>
+                        {% endif %}
+            {% endfor %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <h4>List of store products</h4>
+            {% for st in store_product %}
+                <div class="post">
+                      {{ st.name }}
+                </div>
+            {% endfor %}
+{% endblock %}

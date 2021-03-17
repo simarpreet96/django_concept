@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+	<div>
+		{% if allpost|length < 1  %}
+		<p>your search <b>{{query}}</b> did not match any document </p>
+		suggestions:
+		<ul>
+		<li>Try different keyword</li>
+		</ul>
+		{% endif %}
+	</div>
+
+{% for p in allpost %}
+    <h4 class="card-title">{{p.name}}</h4>
+    <p class="card-text">$ {{p.price}}</p>
+{% endfor %}
+</div>
+
+{% endblock %}

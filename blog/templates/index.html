@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+        {% block content %}
+        <h4>List of models and forms</h4>
+
+<br>
+    <a href="{% url 'signup' %}">Signup</a>
+<br>
+<a href="{% url 'login' %}">Login</a>
+<br>
+<a href="{% url 'post_list' %}">List of post</a>  &nbsp; <a href="{% url 'add_post' %}">Add post</a>
+<br>
+<a href="{% url 'product_list' %}">List of Product</a> &nbsp; <a href="{% url 'add_product' %}">Add product</a>
+&nbsp; <a href="{% url 'category_list' %}">List of Product Category</a> &nbsp;
+<a href="{% url 'user_product' %}">Product By User</a>
+<br>
+<a href="{% url 'store_list' %}">List of Store</a> &nbsp; <a href="{% url 'add_store' %}">Add store</a>
+
+{% endblock %}

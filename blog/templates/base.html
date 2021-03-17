@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>mysite_blog</title>
+    </head>
+    <body>
+    <nav class="mb-3">
+         <a href="{% url 'home' %}">Home</a>
+        <br>
+                <br>
+
+    {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button class="btn btn-primary btn-sm" type="submit">Log Out</button>
+        </form>
+    {% endif %}
+        <a href="{% url 'cart_view' %}">Cart</a>
+         <a href="{% url 'wishlist_view' %}">Wishlist</a>
+        <br>
+        <br>
+        <div class="search-box">
+                <form method="GET" action="{% url 'search' %}">
+                          <input class="input-text" placeholder="search.." type="text" name="query" id="query">
+                          <button class="search-btn">Search</button>
+                          </form>
+                        </div>
+</nav>
+    <br>
+           {% block content %}
+            {% endblock %}
+    </body>
+</html>

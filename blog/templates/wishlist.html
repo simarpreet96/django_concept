@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+  {% block content %}
+
+  <h2>Wish LIST</h2>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+<!--         <th>S.No</th>-->
+<!--          <th>Product Image</th>-->
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Product ID</th>
+        <th>Add to Cart</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+<!--         <td>{{ forloop.counter }}</td>
+ -->    {% for w in wishs %}
+<!--        <td>-->
+<!--            {% for image in w.product_images.all %}-->
+<!--                            <img height="70" width="70" alt="" src="{{ image.image.url }}">-->
+<!--                    {% endfor %}-->
+<!--        </td>-->
+        <td>{{w.item.name}}</td>
+        <td>{{w.item.price}}</td>
+        <td>{{w.item.category.categoryname}}</td>
+        <td>{{w.item.pk}}</td>
+        <td><a href="{% url 'add_to_cart' w.pk %}"> Add to cart </a></td>
+        <td><a href="{% url 'remove_wish' w.pk %}"> Remove </a></td>
+      </tr>
+
+    {% endfor %}
+
+    </tbody>
+  </table>
+
+{% endblock %}

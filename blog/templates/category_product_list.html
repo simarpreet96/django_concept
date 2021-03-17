@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <h4>List of product by categories</h4>
+            {% for cpl in category_product %}
+                <div class="post">
+                      {{ cpl.name }}
+                </div>
+            {% endfor %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <h4>List of Post</h4>
+            {% for post in posts %}
+                <div class="post">
+                    <div class="date">
+                         <p>created: {{ post.created_date }}</p>
+                    </div>
+                        <h2>{{ post.title }}</h2>
+                        <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <h4>List of Category for Product</h4>
+            {% for cl in categorylist %}
+                <div class="post">
+                        <a href="{% url 'category_product_list' cl.pk %}">
+                            {{ cl.categoryname|linebreaksbr}}</a>
+                </div>
+            {% endfor %}
+{% endblock %}

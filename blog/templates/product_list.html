@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <h4>List of Product</h4>
+        <br>
+        <a href="{% url 'filter_product' %}?filter_type=low ">low to high</a> &nbsp;
+        <a href="{% url 'filter_product' %}?filter_type=high ">high to low</a>
+
+            {% for pro in products %}
+                        <h2>{{ pro.name }}</h2>
+                     {% for image in pro.product_images.all %}
+                            <img height="70" width="70" alt="" src="{{ image.image.url }}">
+                    {% endfor %}
+                        <!-- <img height="70" width="70" src="{{ image.image.url }}"> -->
+                        <p>{{ pro.price|linebreaksbr }}</p>
+                        <p>{{ pro.description|linebreaksbr }}</p>
+                        <p>{{ pro.category|linebreaksbr }}</p>
+                         <a href="{% url 'add_to_cart' pro.pk %}">Add to Cart</a>
+                        <a href="{% url 'add_to_wishlist' pro.pk %}">Add to Wishlist</a>
+            {% endfor %}
+
+<!-- product-list filter  in minimum and maximum rs of product for all products -->
+            {% for fill in fill_products %}
+                        <h2>{{ fill.name }}</h2>
+                     {% for image in fill.product_images.all %}
+                            <img height="70" width="70" alt="" src="{{ image.image.url }}">
+                    {% endfor %}
+                        <!-- <img height="70" width="70" src="{{ image.image.url }}"> -->
+                        <p>{{ fill.price|linebreaksbr }}</p>
+                        <p>{{ fill.description|linebreaksbr }}</p>
+                        <p>{{ fill.category|linebreaksbr }}</p>
+                         <a href="{% url 'add_to_cart' fill.pk %}">Add to Cart</a>
+                        <a href="{% url 'add_to_wishlist' fill.pk %}">Add to Wishlist</a>
+            {% endfor %}
+
+{% endblock %}

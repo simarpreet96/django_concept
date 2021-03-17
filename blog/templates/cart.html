@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <h4>Add to Cart</h4>
+              {% for prod in carts %}
+                <div class="post">
+                        {{ prod.item.name }}
+                        {{ prod.item.price }}
+    <input type="text" class="form-control quantity" size="1" value="{{prod.quantity}}" name="quantity">
+    <a href="{% url 'decreaseCart' prod.item.pk %}">Decrease Cart</a>
+    <a href="{% url 'delete_cart' prod.item.pk %}">Delete Cart</a>
+                </div>
+
+            {% endfor %}
+        <a href="{% url 'checkout' %}">Checkout</a>
+{% endblock %}
